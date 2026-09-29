@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Industrial Safety Monitor</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Chart.js for graphs -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <header class="header">
+        <div class="header-titles">
+            <h1>🏭 INDUSTRIAL SAFETY MONITOR</h1>
+            <h2>ESP32 • IoT Multi-Sensor Monitoring</h2>
+        </div>
+        <div class="header-status">
+            <span class="status-dot" id="conn-dot"></span>
+            <span id="conn-status">CONNECTING...</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Main Status Card -->
+        <section class="card main-status" id="main-status-card">
+            <h3>SYSTEM STATUS</h3>
+            <div class="status-display">
+                <span class="status-icon" id="sys-icon">⚪</span>
+                <span class="status-text" id="sys-text">WAITING FOR DATA</span>
+            </div>
+            <p id="sys-subtext">Connecting to ThingSpeak...</p>
+        </section>
+
+        <!-- Sensor Grid -->
+        <section class="sensor-grid">
+            <div class="card sensor-card">
+                <h4>🌡 Temperature</h4>
+                <div class="sensor-value"><span id="val-temp">--</span> °C</div>
+            </div>
+            <div class="card sensor-card">
+                <h4>💧 Humidity</h4>
+                <div class="sensor-value"><span id="val-hum">--</span> %</div>
+            </div>
+            <div class="card sensor-card">
+                <h4>🛢 Gas Level</h4>
+                <div class="sensor-value"><span id="val-gas">--</span> <small>RAW</small></div>
+            </div>
+            <div class="card sensor-card">
+                <h4>🔥 Flame</h4>
+                <div class="sensor-value" id="val-flame">--</div>
+            </div>
+            <div class="card sensor-card">
+                <h4>📳 Vibration</h4>
+                <div class="sensor-value" id="val-vib">--</div>
+            </div>
+            <div class="card sensor-card">
+                <h4>🚨 Emergency</h4>
+                <div class="sensor-value" id="val-touch">--</div>
+            </div>
+            <div class="card sensor-card">
+                <h4>📡 Wi-Fi</h4>
+                <div class="sensor-value" id="val-wifi">CONNECTED</div>
+            </div>
+            <div class="card sensor-card">
+                <h4>☁️ Cloud</h4>
+                <div class="sensor-value" id="val-cloud">ONLINE</div>
+                <div class="last-update" id="last-update">Last update: --</div>
+            </div>
+        </section>
+
+        <!-- Graphs -->
+        <section class="graphs-section">
+            <div class="card graph-card">
+                <h3>Temperature History</h3>
+                <canvas id="tempChart"></canvas>
+            </div>
+            <div class="card graph-card">
+                <h3>Humidity History</h3>
+                <canvas id="humChart"></canvas>
+            </div>
+            <div class="card graph-card">
+                <h3>MQ-2 Gas History</h3>
+                <canvas id="gasChart"></canvas>
+            </div>
+            <div class="card graph-card">
+                <h3>System Status History</h3>
+                <canvas id="statusChart"></canvas>
+            </div>
+        </section>
+
+        <!-- Events and Alerts -->
+        <div class="bottom-grid">
+            <section class="card events-card">
+                <h3>Recent Events</h3>
+                <div class="event-list" id="event-list">
+                    <p>Loading events...</p>
+                </div>
+            </section>
+            
+            <section class="card alerts-card" id="alerts-panel">
+                <h3>Active Alerts</h3>
+                <div id="alert-content">
+                    <p>No active alerts</p>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>

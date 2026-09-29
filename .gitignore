@@ -1,0 +1,23 @@
+# Secrets & Local Credentials
+.env
+.env.*
+*.env
+config.h
+secrets.h
+credentials.h
+private_keys.h
+
+# Arduino / PlatformIO / Build Outputs
+build/
+bin/
+*.bin
+*.elf
+*.hex
+.pio/
+.vscode/
+.idea/
+
+# OS / Editor Files
+.DS_Store
+Thumbs.db
+desktop.ini
